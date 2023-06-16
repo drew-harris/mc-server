@@ -1,0 +1,5 @@
+name: DrewsPlugin
+version: "${project.version}"
+main: net.drewh.drewsplugin.DrewsPlugin
+api-version: 1.19
+authors: [drewh]
