@@ -1,4 +1,4 @@
-# Humin Game Lab Minecraft Server
+# Minecraft Server
 
 ## Local Development Guide
 
