@@ -16,6 +16,7 @@ FROM maven:3.9.2-eclipse-temurin-17
 WORKDIR /server
 
 ARG spigot_url=https://minecraft-hgl-drew.s3.amazonaws.com/spigot.jar
+ARG invsee_url=https://minecraft-hgl-drew.s3.amazonaws.com/InvSee%2B%2B.jar
 
 # Install wget
 RUN apt-get update && apt-get install -y wget
@@ -41,6 +42,8 @@ COPY ./server.properties ./server.properties
 ## PLUGIN SETUP ##
 # Copy plugins from plugins stage
 COPY --from=plugins /plugins/DrewsPlugin/target/DrewsPlugin-1.0-SNAPSHOT.jar ./plugins/DrewsPlugin.jar
+
+RUN wget -O ./plugins/invsee.jar $invsee_url
 
 COPY ./spigot/spigot.yml ./
 
