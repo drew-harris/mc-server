@@ -1,7 +1,7 @@
 #################
 #### PLUGINS ####
 #################
-FROM maven:3.9.2-eclipse-temurin-17 as plugins
+FROM maven:eclipse-temurin as plugins
 WORKDIR /plugins
 
 COPY ./plugins/DrewsPlugin/ ./DrewsPlugin
@@ -11,12 +11,13 @@ RUN mvn -f ./DrewsPlugin/pom.xml clean package
 #################
 #### SERVER #####
 #################
-FROM maven:3.9.2-eclipse-temurin-17
+FROM maven:eclipse-temurin
 
 WORKDIR /server
 
-ARG spigot_url=https://minecraft-hgl-drew.s3.amazonaws.com/spigot.jar
-ARG invsee_url=https://minecraft-hgl-drew.s3.amazonaws.com/InvSee%2B%2B.jar
+ARG spigot_url=https://api.papermc.io/v2/projects/paper/versions/1.20.6/builds/147/downloads/paper-1.20.6-147.jar
+ARG invsee_url=https://files.drewh.net/api/public/dl/sAcmzk-u/InvSee%2B%2B.jar
+ARG nicknames_url=https://files.drewh.net/api/public/dl/2YOYS1es/HaoNick-v4.6.7.jar
 
 # Install wget
 RUN apt-get update && apt-get install -y wget
@@ -38,12 +39,12 @@ RUN sed -i 's/false/true/g' eula.txt
 
 COPY ./server.properties ./server.properties
 
-
 ## PLUGIN SETUP ##
 # Copy plugins from plugins stage
 COPY --from=plugins /plugins/DrewsPlugin/target/DrewsPlugin-1.0-SNAPSHOT.jar ./plugins/DrewsPlugin.jar
 
 RUN wget -O ./plugins/invsee.jar $invsee_url
+RUN wget -O ./plugins/nicknames.jar $nicknames_url
 
 COPY ./spigot/spigot.yml ./
 
