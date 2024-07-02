@@ -1,0 +1,85 @@
+# Essentials config.yml
+
+# General settings
+ops-name-color: '&c'
+nickname-prefix: '&f'
+change-displayname: true
+
+# Command settings
+commands:
+  nickname:
+    # Allow players to change their own nickname
+    aliases: [nick]
+    description: Change your display name
+  nickother:
+    # Disable the ability to change other players' nicknames
+    disabled: true
+
+# Disable all other commands by default
+command-costs: {}
+disabled-commands:
+  - balancetop
+  - clearinventory
+  - delhome
+  - deletewarp
+  - eco
+  - essentials
+  - ext
+  - getpos
+  - god
+  - heal
+  - home
+  - ignore
+  - item
+  - kit
+  - mail
+  - me
+  - motd
+  - msg
+  - mute
+  - pay
+  - powertool
+  - r
+  - rules
+  - seen
+  - sell
+  - setjail
+  - sethome
+  - setspawn
+  - setwarp
+  - spawn
+  - spawnmob
+  - suicide
+  - time
+  - tpa
+  - tpaccept
+  - tpahere
+  - tpdeny
+  - tp
+  - tpo
+  - tpohere
+  - tppos
+  - warp
+  - weather
+  - whois
+  - workbench
+  - world
+
+# Restrict teleportation commands
+teleport-cooldown: 0
+teleport-delay: 0
+teleport-safety: true
+
+# Disable kits
+kits: {}
+
+# Disable warps
+warps: {}
+
+# Disable economy features
+economy:
+  enable: false
+
+# Disable God mode
+god:
+  enable: false
